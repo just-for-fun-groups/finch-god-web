@@ -43,7 +43,6 @@
   </el-form-item>
 </el-form>
 <script>
-  import { mapGetters } from 'vuex'
   export default {
     data() {
       return {
@@ -59,29 +58,10 @@
         }
       }
     },
-    name: 'Dashboard',
-    computed: {
-      ...mapGetters([
-        'name'
-      ])
-    },
     methods: {
       onSubmit() {
         console.log('submit!');
       }
     }
   }
-</script>
-
-<script>
-import { mapGetters } from 'vuex'
-
-export default {
-  name: 'Dashboard',
-  computed: {
-    ...mapGetters([
-      'name'
-    ])
-  }
-}
 </script>

@@ -89,7 +89,18 @@ export const constantRoutes = [
       }
     ]
   },
-
+  {
+    path: '/finch',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'finch',
+        component: () => import('@/views/finch/index'),
+        meta: { title: '洗篮子排行榜', icon: 'form' }
+      }
+    ]
+  },
   {
     path: '/nested',
     component: Layout,
