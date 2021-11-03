@@ -23,7 +23,9 @@
     </el-dialog>
   </div>
 </template>
+
 <script>
+  import request from '@/utils/request';
 export default {
   data() {
     return {
@@ -44,6 +46,14 @@ export default {
   },
   methods: {
     onSubmit() {
+      request({
+        url: '/userInfo/getUserinfo',
+        method: 'get',
+        baseURL: 'http://localhost:8081'
+      }).then(response=>{
+        console.log(response);
+        this.$message('添加成功!')
+      })
       this.$message('submit!')
       this.dialogFormVisible = false
       this.dialogTableVisible = false
