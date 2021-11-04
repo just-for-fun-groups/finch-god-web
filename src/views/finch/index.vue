@@ -7,7 +7,7 @@
           <el-input v-model="form.name" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="玩家描述" :label-width="formLabelWidth">
-          <el-input v-model="form.desc" autocomplete="off"></el-input>
+          <el-input v-model="form.signature" autocomplete="off"></el-input>
         </el-form-item>
         <!--<el-form-item label="" :label-width="formLabelWidth">-->
         <!--<el-select v-model="form.region" placeholder="请选择活动区域">-->
@@ -26,46 +26,42 @@
 
 <script>
   import request from '@/utils/request';
-export default {
-  data() {
-    return {
-      dialogTableVisible: false,
-      dialogFormVisible: false,
-      form: {
-        name: '',
-        desc: '',
-        region: '',
-        date1: '',
-        date2: '',
-        delivery: false,
-        type: [],
-        resource: ''
-      },
-      formLabelWidth: '120px'
-    }
-  },
-  methods: {
-    onSubmit() {
-      request({
-        url: '/userInfo/getUserinfo',
-        method: 'get',
-        baseURL: 'http://localhost:8081'
-      }).then(response=>{
-        console.log(response);
-        this.$message('添加成功!')
-      })
-      this.$message('submit!')
-      this.dialogFormVisible = false
-      this.dialogTableVisible = false
+
+  export default {
+    data() {
+      return {
+        dialogTableVisible: false,
+        dialogFormVisible: false,
+        form: {
+          name: '',
+          signature: ''
+        },
+        formLabelWidth: '120px'
+      }
     },
-    onCancel() {
-      this.dialogFormVisible = false
-      this.dialogTableVisible = false
-      this.$message({
-        message: 'cancel!',
-        type: 'warning'
-      })
+    methods: {
+      onSubmit() {
+        request({
+          url: '/getPlayerInfo/insertPlayerInfo',
+          method: 'post',
+          param: JSON.stringify(this.form),
+          baseURL: 'http://localhost:8081'
+        }).then(response => {
+          console.log(response);
+          this.$message('添加成功!')
+        })
+        this.$message('submit!')
+        this.dialogFormVisible = false
+        this.dialogTableVisible = false
+      },
+      onCancel() {
+        this.dialogFormVisible = false
+        this.dialogTableVisible = false
+        this.$message({
+          message: 'cancel!',
+          type: 'warning'
+        })
+      }
     }
   }
-}
 </script>
