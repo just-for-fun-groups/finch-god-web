@@ -26,6 +26,7 @@
 
 <script>
   import request from '@/utils/request';
+  import axios from 'axios'
 
   export default {
     data() {
@@ -41,11 +42,13 @@
     },
     methods: {
       onSubmit() {
+        debugger;
         request({
           url: '/getPlayerInfo/insertPlayerInfo',
           method: 'post',
-          param: JSON.stringify(this.form),
-          baseURL: 'http://localhost:8081'
+          data: JSON.stringify(this.form),
+          baseURL: 'http://localhost:8081',
+          headers:{'Content-Type': 'application/json'}
         }).then(response => {
           console.log(response);
           this.$message('添加成功!')
