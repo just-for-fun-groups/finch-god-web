@@ -1,8 +1,8 @@
 <template>
   <div class="app-container">
     <el-carousel :interval="2000" type="card" height="280px" loop="true" autoplay="true">
-      <el-carousel-item v-for="item in 6" :key="item">
-        <h3 class="medium">{{ item }}</h3>
+      <el-carousel-item v-for="item in lunbo" :key="item">
+        <img :src="item">
       </el-carousel-item>
     </el-carousel>
   </div>
@@ -29,13 +29,30 @@
   export default {
     data() {
       return {
-        activeIndex: '1',
-        activeIndex2: '1'
-      };
+        lunbo:[
+          require("../../images/wawa.jpg"),
+          require("../../images/jiaozi.jpg"),
+          require("../../images/wangcai1.jpg"),
+          require("../../images/wangcai2.jpg"),
+          require("../../images/wangcai3.jpg"),
+          require("../../images/xijiezhachuan.jpg"),
+
+        ]
+      }
+
     },
     methods: {
-      handleSelect(key, keyPath) {
-        console.log(key, keyPath);
+      setSize:function() {
+        //设置图片大小自适应
+        this.bannerHeight=400/1920*this.screenWidth;
+      },
+    },
+    mounted(){
+      this.screenWidth=window.innerWidth;
+      this.setSize();
+      window.onresize = ()=>{
+        this.screenWidth = window.innerWidth;
+        this.setSize();
       }
     }
   }
