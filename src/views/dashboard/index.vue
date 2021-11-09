@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
-    <el-carousel :interval="4000" type="card" height="280px" loop="true" >
-      <el-carousel-item v-for="item in 5" :key="item">
+    <el-carousel :interval="2000" type="card" height="280px" loop="true" autoplay="true">
+      <el-carousel-item v-for="item in 6" :key="item">
         <h3 class="medium">{{ item }}</h3>
       </el-carousel-item>
     </el-carousel>
