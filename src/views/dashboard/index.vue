@@ -1,15 +1,17 @@
 <template>
   <div class="app-container">
-    <el-carousel :interval="2000" type="card" height="280px" loop="true" autoplay="true">
+    <el-carousel :interval="2000"   loop="true" autoplay="true">
       <el-carousel-item v-for="item in lunbo" :key="item">
-        <img :src="item">
+        <figure>
+          <img :src="item" style="height: auto;width: auto">
+        </figure>
       </el-carousel-item>
     </el-carousel>
   </div>
 
 </template>
 <style>
-  .el-carousel__item h3 {
+  .el-carousel__item img {
     color: #475669;
     font-size: 14px;
     opacity: 0.75;
