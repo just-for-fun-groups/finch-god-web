@@ -42,7 +42,6 @@
     },
     methods: {
       onSubmit() {
-        debugger;
         request({
           url: '/getPlayerInfo/insertPlayerInfo',
           method: 'post',
